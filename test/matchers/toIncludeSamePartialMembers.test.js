@@ -10,6 +10,13 @@ describe('.toIncludeSamePartialMembers', () => {
     ]);
   });
 
+  test('passes when array values matches the partial members of the set in different order', () => {
+    expect([{ hello: 'world' }, { foo: 'bar', baz: 'qux' }]).toIncludeSamePartialMembers([
+      { foo: 'bar' },
+      { hello: 'world' },
+    ]);
+  });
+
   test('fails when array values do not contain any of the members of the set', () => {
     expect(() =>
       expect([{ hello: 'world' }, { foo: 'bar', baz: 'qux' }]).toIncludeSamePartialMembers([{ foo: 'qux' }]),
